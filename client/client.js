@@ -41,3 +41,15 @@ socket.on('chat_message', function(msg) {
     $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
 });
 
+$('#start-camera').click(async function() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true,audio:true });
+
+        $('#camera-stream')[0].srcObject = stream;
+        $('#camera-container').show();
+
+    } catch (error) {
+        console.error('Error accessing the camera:', error);
+    }
+});
+
